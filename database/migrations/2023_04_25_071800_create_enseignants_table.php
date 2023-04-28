@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('enseignants', function (Blueprint $table) {
             $table->id();
-            //$table->foreignId("service_id")->constrained()->onDelete("cascade");
             $table->string('nom');
             $table->string('prenom');
             $table->char('sexe');
@@ -23,11 +22,8 @@ return new class extends Migration
             $table->string('numeroPieceIdentite');
             $table->string('email')->unique();
             $table->string('photo');
-            $table->string('password');
             $table->timestamps();
         });
-
-        //Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -35,12 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-
-        /*Schema::table("users",function(Blueprint $table){
-            $table->dropForeign("service_id");
-        });*/
-
-        
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('enseignants');
     }
 };
