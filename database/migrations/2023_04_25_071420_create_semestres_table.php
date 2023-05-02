@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('semestres', function (Blueprint $table) {
             $table->id();
             $table->string("nom");
+            $table->string("codeSemestre");//S1,S2,S3,S4,S5,S6,...
             $table->foreignId("niveau_id")->constrained()->onDelete("cascade");
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

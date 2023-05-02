@@ -13,21 +13,25 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            //$table->foreignId("service_id")->constrained()->onDelete("cascade");
+            $table->foreignId("service_id")->constrained()->onDelete("cascade");
             $table->string('nom');
             $table->string('prenom');
             $table->char('sexe');
             $table->string('telephone')->unique();
             $table->string('telephone2')->nullabe()->unique();
-             $table->string('pieceIdentite');
+            $table->string("adresse");
+            $table->string("situationMatrimoniale");
+            $table->integer("nombrEnfant")->nullable();
+            $table->string('pieceIdentite');
             $table->string('numeroPieceIdentite');
+            $table->string("niveauEtude");
             $table->string('email')->unique();
             $table->string('photo');
             $table->string('password');
             $table->timestamps();
         });
 
-        //Schema::enableForeignKeyConstraints();
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -36,9 +40,9 @@ return new class extends Migration
     public function down(): void
     {
 
-        /*Schema::table("users",function(Blueprint $table){
+        Schema::table("users",function(Blueprint $table){
             $table->dropForeign("service_id");
-        });*/
+        });
 
         
         Schema::dropIfExists('users');

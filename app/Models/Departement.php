@@ -9,7 +9,7 @@ class Departement extends Model
 {
     use HasFactory;
 
-    public function enseignants(){
-        return $this->belongsToMany(Enseignant::class);
+    public function matieres(){
+        return $this->hasMany(Matiere::class);
     }
 }

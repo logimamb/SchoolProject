@@ -25,7 +25,11 @@ class Enseignant extends Model
         return $this->belongsToMany(Semestre::class);
     }
 
-    public function departements(){
-        return $this->belongsToMany(Departement::class);
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
+
+    public function enseignants(){
+        return $this->belongsToMany(Enseignant::class);
     }
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class OptionsSeeder extends Seeder
 {
@@ -12,6 +13,10 @@ class OptionsSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table("options")->insert([
+            ["nom" => "Commerciale"],
+            ["nom" => "Technologique"],
+            ["nom" => "Industrielle"]
+        ]);
     }
 }

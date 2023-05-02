@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('frais', function (Blueprint $table) {
             $table->id();
+            $table->string("motif");
+            $table->string("montant");
+            $table->foreignId("etudiant_id")->constrained()->onDelete("cascade");
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -22,6 +27,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+
+        Schema::table("frais",function(Blueprint $table){
+            $table->dropForeign("etudiant_id");
+        });
+        
         Schema::dropIfExists('frais');
     }
 };

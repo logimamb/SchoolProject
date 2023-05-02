@@ -16,8 +16,16 @@ class ScolariteFactory extends Factory
      */
     public function definition(): array
     {
+        $diplomeT = ["BAC","BET","BTS"];
+        $diplomeV = array_rand($diplomeT,1);
+        $diplome = $diplomeT[$diplomeV];
         return [
-            //
+            "diplomEntree" => $diplome,
+            "anneeOptionDiplome" => $this->faker->dateTimeBetween("1985-10-1","2006-12-1"),
+            "dernierNiveau" => $diplome,
+            "dernierEtablissementFrequente" => $this->faker->city,
+            "canalInformer" => $this->faker->lastName,
+            "serie" => $this->faker->country
         ];
     }
 }

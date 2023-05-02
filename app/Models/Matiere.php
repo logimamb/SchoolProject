@@ -20,4 +20,8 @@ class Matiere extends Model
     public function enseignants(){
         return $this->belongsToMany(Enseignant::class);
     }
+
+    public function departement(){
+        return $this->belongsTo(Departement::class);
+    }
 }

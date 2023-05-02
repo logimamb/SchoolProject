@@ -12,10 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('inscriptions', function (Blueprint $table) {
+            $table->id();
             $table->foreignId("filiere_id")->constrained()->onDelete("cascade");
             $table->foreignId("etudiant_id")->constrained()->onDelete("cascade");
             $table->foreignId("niveau_id")->constrained()->onDelete("cascade");
             $table->foreignId("user_id")->constrained()->onDelete("cascade");
+            $table->string("typeDePlace");
+            $table->string("cycle");//Licence professionnelle ou professionnalisante
+            $table->date("dateInscription");
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

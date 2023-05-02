@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('matieres', function (Blueprint $table) {
             $table->id();
             $table->string("nom");
-            $table->string("codeMatiere");  
+            $table->string("codeMatiere");
+            $table->foreignId("departement_id")->constrained()->onDelete("cascade");
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -24,6 +27,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+
+        Schema::table("matieres", function(Blueprint $table){
+            $table->dropForeign("departement_id");
+        });
+        
         Schema::dropIfExists('matieres');
     }
 };

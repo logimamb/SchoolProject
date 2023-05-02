@@ -12,12 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('programmes', function (Blueprint $table) {
+            $table->id();
             $table->foreignId("filiere_id")->constrained()->onDelete("cascade");
             $table->foreignId("semestre_id")->constrained()->onDelete("cascade");
             $table->foreignId("matiere_id")->constrained()->onDelete("cascade");
             $table->foreignId("enseignant_id")->constrained()->onDelete("cascade");
             $table->string("volumeHoraire");
+            $table->string("UnitEnseignement");
             $table->string("coefficient");
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

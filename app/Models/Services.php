@@ -9,7 +9,11 @@ class Services extends Model
 {
     use HasFactory;
 
-    public function agents(){
-        return $this->belongsTo(User::class);
+    public function users(){
+        return $this->hasMany(User::class);
+    }
+
+    public function fonctions(){
+        return $this->hasMany(Fonctions::class);
     }
 }

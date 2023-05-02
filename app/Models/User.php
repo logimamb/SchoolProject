@@ -51,10 +51,22 @@ class User extends Authenticatable
     }
 
     public function inscriptions(){
-        return $this->hasMany(Etudiants::class);
+        return $this->hasMany(Inscription::class);
     }
 
     public function service(){
-        return $this->hasMany(Services::class);
+        return $this->belongsTo(Services::class);
+    }
+
+    public function matieres(){
+        return $this->belongsToMany(Matiere::class);
+    }
+
+    public function enseignants(){
+        return $this->belongsToMany(Enseignant::class);
+    }
+
+    public function diplomes(){
+        return $this->belongsToMany(Diplomes::class);
     }
 }

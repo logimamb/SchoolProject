@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('filieres', function (Blueprint $table) {
             $table->id();
             $table->string("codeFiliere");
-            $table->string("libelle");
+            $table->string("nom");
+            $table->foreignId("option_id")->constrained()->onDelete("cascade");
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -24,6 +27,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+
+        Schema::table("filiere",function(Blueprint $table){
+            $table->dropForeign("option_id");
+        });
+        
         Schema::dropIfExists('filieres');
     }
 };

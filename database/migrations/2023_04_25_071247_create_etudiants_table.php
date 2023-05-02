@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('etudiants', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")->constrained()->onDelete("cascade");
-            $table->foreignId("tuteur_id")->constrained()->onDelete("cascade");
-            $table->foreignId("scolarite_id")->constrained()->onDelete("cascade");
+            $table->foreignId("parcour_id")->constrained()->onDelete("cascade");//Scolarité = Parcours
             $table->string("nom");
             $table->string("prenom");
             $table->date("dateDeNaissance");
@@ -25,6 +24,13 @@ return new class extends Migration
             $table->string("telephone")->unique();
             $table->string("telephone2")->unique()->nullable();
             $table->string("adresse");
+            $table->string("nomDuPere");
+            $table->string("NomDeLaMere");
+            $table->string("telephoneDuPere");
+            $table->string("telephoneDeLaMere");
+            $table->string("nomDuTuteur");
+            $table->string("fonctionDuTuteur");
+            $table->string("lienAvecTuteur");
             $table->string("situationMatrimoniale");
             $table->string("photo");
             $table->timestamps();
@@ -41,8 +47,7 @@ return new class extends Migration
 
         schema::table("etudiants",function(Blueprint $table){
             $table->dropForeign("user_id");
-            $table->dropForeign("tuteur_id");
-            $table->dropForeign("scolarite_id");
+            $table->dropForeign("parcour_id");
 
         });
 

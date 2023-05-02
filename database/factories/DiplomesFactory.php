@@ -16,8 +16,17 @@ class DiplomesFactory extends Factory
      */
     public function definition(): array
     {
+        $diplomeT = ["CEP","BEPC","BAC","BTS","Licence","Master","Doctorat"];
+        $valeurD = array_rand($diplomeT,1);
+        $diplome = $diplomeT[$valeurD];
+
         return [
-            //
+            "nom" => $diplome,
+            "referenceDiplome" => $this->faker->buildingNumber,
+            "paysObtentionDiplome" => $this->faker->country,
+            "villeObtentionDiplome" => $this->faker->city,
+            "ecoleObtentionDiplome" => $this->faker->name,
+            "dateObtentionDiplome" => $this->faker->dateTimeBetween("1985-12-1","2022-12-1")
         ];
     }
 }

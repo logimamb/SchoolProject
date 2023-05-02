@@ -15,11 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
+            $table->string("adresse");
             $table->char('sexe');
+            $table->string("situationMatrimoniale");
+            $table->integer("nombrEnfant")->nullable();
             $table->string('telephone')->unique();
             $table->string('telephone2')->nullabe()->unique();
              $table->string('pieceIdentite');
             $table->string('numeroPieceIdentite');
+            $table->string("statut");//Permanent,Vacataire,Préstataire,...
             $table->string('email')->unique();
             $table->string('photo');
             $table->timestamps();

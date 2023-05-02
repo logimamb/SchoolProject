@@ -17,9 +17,9 @@ class Etudiants extends Model
         return $this->belongsToMany(Niveau::class);
     }
 
-    public function frais(){
+    /*public function frais(){
         return $this->belongsToMany(Frais::class);
-    }
+    }*/
 
     public function recus(){
         return $this->hasMany(Recu::class);
@@ -35,6 +35,14 @@ class Etudiants extends Model
 
     public function scolarite(){
         return $this->belongsTo(Scolarite::class);
+    }
+
+    public function frais(){
+        return $this->hasMany(Frais::class);
+    }
+
+    public function parcours(){
+        return $this->belongsToMany(Parcours::class);
     }
 
 }

@@ -9,7 +9,11 @@ class Diplomes extends Model
 {
     use HasFactory;
 
-    public function enseignant(){
+    public function enseignants(){
         return $this->belongsToMany(Enseignant::class);
+    }
+
+    public function users(){
+        return $this->belongsToMany(User::class);
     }
 }

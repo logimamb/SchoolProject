@@ -9,11 +9,11 @@ class Frais extends Model
 {
     use HasFactory;
 
-    public function etudiants(){
-        return $this->belongsToMany(Etudiants::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
-    public function agent(){
-        return $this->belongsTo(User::class);
+    public function etudiant(){
+        return $this->belongsTo(Etudiants::class);
     }
 }
