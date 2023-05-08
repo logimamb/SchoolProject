@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -20,4 +20,18 @@
         </div>
     </div>
 </div>
+@endsection --}}
+
+@extends("layouts.master");
+
+@section("contenu")
+
+<div class="row">
+    <div class="col-12 p-4">
+        <div class="jumbotron">
+            <h1 class="display-3">Bienvenue, <strong>{{ userFullName() }}</strong></h1>
+        </div>
+    </div>
+</div>
+
 @endsection
