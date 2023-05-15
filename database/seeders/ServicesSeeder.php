@@ -20,7 +20,7 @@ class ServicesSeeder extends Seeder
             ["nomDeService" => "Sécurité"],
             ["nomDeService" => "Scolarité"],
             ["nomDeService" => "Ressources humaines"],
-            ["nomDeService" => "Construction"],
+            ["nomDeService" => "Travaux"],
             ["nomDeService" => "Maintenance"],
             ["nomDeService" => "Direction"]
         ]);

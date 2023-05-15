@@ -7,7 +7,7 @@
                     alt="User profile picture">
             </div>
             <h3 class="profile-username text-center ellipsis">{{ userFullName() }}</h3>
-            <p class="text-muted text-center">Software Engineer</p>
+            <p class="text-muted text-center">{{ getRolesName() /*Auth()->user()->fonction->nom*/}}</p>
             <ul class="list-group bg-dark mb-3">
                 <li class="list-group-item">
                     <a class="d-flex align-items-center" href=""><i class="fa fa-lock pr-2"></i><b>Mot de passe</b>

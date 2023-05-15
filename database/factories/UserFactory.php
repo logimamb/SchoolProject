@@ -36,6 +36,7 @@ class UserFactory extends Factory
         
         return [
             "service_id" => rand(1,9),
+            "fonction_id" => rand(1,10),
             'nom' => $this->faker->lastName,
             'prenom' => $this->faker->firstName,
             "sexe" => $genre,

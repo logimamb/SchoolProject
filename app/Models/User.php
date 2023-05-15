@@ -58,6 +58,10 @@ class User extends Authenticatable
         return $this->belongsTo(Services::class);
     }
 
+    public function fonction(){
+        return $this->belongsTo(Fonctions::class);
+    }
+
     public function matieres(){
         return $this->belongsToMany(Matiere::class);
     }
@@ -65,8 +69,21 @@ class User extends Authenticatable
     public function enseignants(){
         return $this->belongsToMany(Enseignant::class);
     }
+    
+    public function roles(){
+        return $this->belongsToMany(Role::class);
+    }
 
     public function diplomes(){
         return $this->belongsToMany(Diplomes::class);
     }
+
+    public function hasRole($role){
+        return $this->roles()->where("nom",$role)->first() !== null;
+    }
+
+    public function hasAnyRoles($roles){
+        return $this->roles()->whereIn("nom",$roles)->first() !== null;
+    }
+
 }

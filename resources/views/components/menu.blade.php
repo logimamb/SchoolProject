@@ -1,5 +1,7 @@
 <nav class="mt-2">
+    
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        @can("SuperAdmin")
 
         <li class="nav-item">
             <a href="#" class="nav-link">
@@ -7,6 +9,11 @@
                 <p>Accueil</p>
             </a>
         </li>
+
+        @endcan
+
+
+        @can("admin")
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fas fa-cogs"></i>
@@ -24,7 +31,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.habilitations.user.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-users-cog"></i>
                                 <p>Utilisateurs</p>
                             </a>
@@ -38,9 +45,10 @@
                 </li>
             </ul>
         </li>
-
+        @endcan
 
         <li class="nav-item">
+            @can("employe")
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>Gestion du personnel
@@ -218,6 +226,7 @@
                 </u>
         </li>
 
+
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-hiking"></i>
@@ -282,6 +291,8 @@
             <p>Gestion des paiements</p>
         </a>
     </li>
+    @endcan
 
     </ul>
+
 </nav>

@@ -30,6 +30,8 @@
     <div class="col-12 p-4">
         <div class="jumbotron">
             <h1 class="display-3">Bienvenue, <strong>{{ userFullName() }}</strong></h1>
+            <p>{{ auth()->user()->service->nomDeService}}</p>
+            <p>{{ auth()->user()->fonction->nom}}</p>
         </div>
     </div>
 </div>

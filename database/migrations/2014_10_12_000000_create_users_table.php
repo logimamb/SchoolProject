@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->foreignId("service_id")->constrained()->onDelete("cascade");
+            $table->foreignId("fonction_id")->constrained()->onDelete("cascade");
             $table->string('nom');
             $table->string('prenom');
             $table->char('sexe');
@@ -42,6 +43,7 @@ return new class extends Migration
 
         Schema::table("users",function(Blueprint $table){
             $table->dropForeign("service_id");
+            $table->dropForeign("fonction_id");
         });
 
         

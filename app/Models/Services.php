@@ -12,8 +12,4 @@ class Services extends Model
     public function users(){
         return $this->hasMany(User::class);
     }
-
-    public function fonctions(){
-        return $this->hasMany(Fonctions::class);
-    }
 }

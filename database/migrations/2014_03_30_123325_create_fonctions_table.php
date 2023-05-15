@@ -14,11 +14,8 @@ return new class extends Migration
         Schema::create('fonctions', function (Blueprint $table) {
             $table->id();
             $table->string("nom");
-            $table->foreignId("service_id")->constrained()->onDelete("cascade");
             $table->timestamps();
         });
-
-        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -26,11 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-
-        Schema::table("fonctions", function(Blueprint $table){
-            $table->dropForeign("service_id");
-        });
-
         Schema::dropIfExists('fonctions');
     }
 };

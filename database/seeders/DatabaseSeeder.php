@@ -39,11 +39,11 @@ class DatabaseSeeder extends Seeder
         $this->call(DepartementSeeder::class);
         $this->call(MatiereSeeder::class);
         $this->call(FonctionsSeeder::class);
-        $this->call(FonctionsSeeder::class);
+        $this->call(RoleSeeder::class);
 
         Diplomes::factory(10)->create();
         Parcours::factory(10)->create();
-        User::factory(10)->create();
+        User::factory(50)->create();
         Etudiants::factory(10)->create();
         DiplomesUsers::factory(10)->create();
         Enseignant::factory(10)->create();
@@ -52,5 +52,14 @@ class DatabaseSeeder extends Seeder
         UserEnseignants::factory(5)->create();
         Programme::factory(10)->create();
         ParcoursEtudiants::factory(10)->create();
+
+        //User::find(1)->fonctions()->attach(1);
+        User::find(1)->roles()->attach(1);
+        // User::find(1)->roles()->attach(3);
+        // User::find(1)->roles()->attach(4);
+        User::find(2)->roles()->attach(4);
+        User::find(2)->roles()->attach(2);
+        User::find(3)->roles()->attach(3);
+        User::find(4)->roles()->attach(4);
     }
 }

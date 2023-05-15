@@ -54,7 +54,7 @@
                 Anything you want
             </div>
 
-            <strong>Copyright &copy; 202php artis3 <a href="https://loïcgiorgio.com">Loïcgiorgio.com</a>.</strong> All rights
+            <strong>Copyright &copy; 2023 <a href="https://loïcgiorgio.com">Loïcgiorgio.com</a>.</strong> All rights
             reserved.
         </footer>
     </div>
