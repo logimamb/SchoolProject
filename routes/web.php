@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\Utilisateurs;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,18 +20,41 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
+//Le group des routes accéssibles uniquements aux administrateurs
+// Route::group([
+//     "middleware" => ["auth","Auth.admin"],
+//     "as" => "admin."
+// ], function(){
+
+//     Route::group([
+//         "prefix" => "habilitations",
+//         "as" => "habilitations."
+//     ], function(){
+//         Route::get("/utilisateurs", [UserController::class,"index"])->name("user.index");
+
+//         // Route::get("/RolesEtPermissions", [UserController::class,"index"])->name("user.index");
+//     });
+// });
+
+// Le group des routes accéssibles uniquements aux administrateurs
+
 Route::group([
-    "middleware" => ["auth","Auth.admin"],
+    "middleware" => ["auth","auth.admin"],
     "as" => "admin."
 ], function(){
 
     Route::group([
-        "prefix" => "habilitations",
-        "as" => "habilitations."
+        "prefix" => "paramétres",
+        "as" => "parametres."
     ], function(){
-        Route::get("/utilisateurs", [UserController::class,"index"])->name("user.index");
 
-        // Route::get("/RolesEtPermissions", [UserController::class,"index"])->name("user.index");
+        Route::group([
+            "prefix" => "habilitations",
+            "as" => "habilitations."
+        ], function(){
+            Route::get("/utilisateurs",Utilisateurs::class)->name("users.index");
+            //admin.parametres.habilitations.users.index
+        });
     });
 });
 

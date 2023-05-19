@@ -59,10 +59,10 @@ class Kernel extends HttpKernel
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
 
-        'Auth.admin' => \App\Http\Middleware\AdminMiddleware::class,
-        'Auth.employe' => \App\Http\Middleware\EmployeMiddleware::class,
-        'Auth.manager' => \App\Http\Middleware\MAnagerMiddleware::class,
-        'Auth.superAdmin' => \App\Http\Middleware\SuperAdminMiddleware::class,
+        'auth.admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'auth.employe' => \App\Http\Middleware\EmployeMiddleware::class,
+        'auth.manager' => \App\Http\Middleware\MAnagerMiddleware::class,
+        'auth.superAdmin' => \App\Http\Middleware\SuperAdminMiddleware::class,
         
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Starter</title>
+    <title>School Project</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -54,7 +54,7 @@
                 Anything you want
             </div>
 
-            <strong>Copyright &copy; 2023 <a href="https://loïcgiorgio.com">Loïcgiorgio.com</a>.</strong> All rights
+            <strong>Copyright &copy; 2023 <a href="https://loïcgiorgio.com">LOGITECH.com</a>.</strong> All rights
             reserved.
         </footer>
     </div>
