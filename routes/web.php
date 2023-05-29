@@ -52,7 +52,7 @@ Route::group([
             "prefix" => "habilitations",
             "as" => "habilitations."
         ], function(){
-            Route::get("/utilisateurs",Utilisateurs::class)->name("users.index");
+            Route::get("/employés",Utilisateurs::class)->name("users.index");
             //admin.parametres.habilitations.users.index
         });
     });

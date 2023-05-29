@@ -4,7 +4,7 @@
             <div class="card-header bg-primary d-flex align-items-center">
                 <h3 class="card-title flex-grow-1"><i class="fas fa-users fa-2x"></i> Liste des employés</h3>
                 <div class="card-tools d-flex align-items-center">
-                    <a href="" class="btn btn-link text-white mr-4 d-block" wire:click.prevent="goToAddUser()"><i
+                    <a class="btn btn-link text-white mr-4 d-block" wire:click.prevent="goToAddUser()"><i
                             class="fas fa-user-plus"></i> Nouvel
                         employé</a>
                     <div class="input-group input-group-md" style="width:250px;">
