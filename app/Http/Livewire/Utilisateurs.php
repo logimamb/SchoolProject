@@ -77,4 +77,21 @@ class Utilisateurs extends Component
 
         $this->dispatchBrowserEvent("showSuccessMessage",["message" => "Employé créé avec succès !"]);
     }
+
+    public function confirmDelete($name,$id){
+        $this->dispatchBrowserEvent("showConfirmMessage",["message" => [
+            "text" => "Vous êtes sur le point de supprimer $name de la liste des employés. Voulez-vous continuer ?",
+            "title" => "Etes-vous sûr de continuer ?",
+            "type" => "warning",
+            "data" => [
+                "user_id" => $id,
+            ]
+        ]]);
+    }
+
+    public function deleteUser($id){
+        User::destroy($id);
+
+        $this->dispatchBrowserEvent("showSuccessMessage",["message" => "Employé supprimé avec succès !"]);
+    }
 }
