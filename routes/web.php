@@ -53,6 +53,7 @@ Route::group([
             "as" => "habilitations."
         ], function(){
             Route::get("/employés",Utilisateurs::class)->name("users.index");
+            Route::get("/roleEtPermission",Utilisateurs::class)->name("users.rolEtPermission");
             //admin.parametres.habilitations.users.index
         });
     });

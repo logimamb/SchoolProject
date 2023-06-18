@@ -34,7 +34,7 @@
                                 <p>Employés</p>
                             </a>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.parametres.habilitations.users.rolEtPermission') }}"  class="nav-link {{setMenuClass('admin.parametres.habilitations.users.rolEtPermission','active')}}">
                                 <i class="nav-icon fas fa-fingerprint"></i>
                                 <p>Roles et permissions</p>
                             </a>

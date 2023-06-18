@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
+define("PAGELIST","liste");
+define("PAGECREATEFORM","create");
+define("PAGEEDITFORM","edit");
+
 function userFullName(){
     return Auth()->user()->prenom." ".Auth()->user()->nom;
 }

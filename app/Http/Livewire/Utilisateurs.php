@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Models\Fonctions;
 use App\Models\Services;
 use App\Models\User;
+use Doctrine\Inflector\Rules\Portuguese\Rules;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -13,26 +15,10 @@ class Utilisateurs extends Component
     use WithPagination;
     protected $paginationTheme ="Bootstrap";
 
-    public $isBtnAddClicked = false;
+    public $currentPage = PAGELIST;
 
     public $newUser = [];
-
-    protected $rules = [
-        "newUser.nom" => "required",
-        "newUser.prenom" => "required",
-        //"newUser.photo" => "required",
-        "newUser.service_id" => "required",
-        "newUser.fonction_id" => "required",
-        "newUser.niveauEtude" => "required",
-        "newUser.adresse" => "required",
-        "newUser.sexe" => "required",
-        "newUser.telephone" => "required|numeric|unique:users,telephone",
-        "newUser.telephone2" => "required|numeric|unique:users,telephone2",
-        "newUser.pieceIdentite" => "required",
-        "newUser.numeroPieceIdentite" => "required|unique:users,numeroPieceIdentite",
-        "newUser.situationMatrimoniale" => "required",
-        "newUser.email" => "required|email|unique:users,email"
-    ];
+    public $editUser = [];
 
     protected $messages = [
         "newUser.nom.required" => "Le nom de l'utilisateur est réquis.",
@@ -57,12 +43,60 @@ class Utilisateurs extends Component
         ])->extends("layouts.master")->section("contenu");
     }
 
+    public function rules(){
+        if($this->currentPage == PAGEEDITFORM){
+            return [
+                "editUser.nom" => ["required"],
+                "editUser.prenom" => ["required"],
+                //"newUser.photo" => "required",
+                "editUser.service_id" => ["required"],
+                "editUser.fonction_id" => ["required"],
+                "editUser.niveauEtude" => ["required"],
+                "editUser.adresse" => ["required"],
+                "editUser.nombrEnfant" => ["numeric"],
+                "editUser.sexe" => ["required"],
+                "editUser.telephone" => ["required","numeric",Rule::unique('users','telephone')->ignore($this->editUser['id'])],
+                "editUser.telephone2" => ["required","numeric",Rule::unique('users','telephone2')->ignore($this->editUser['id'])],
+                "editUser.pieceIdentite" => ["required"],
+                "editUser.numeroPieceIdentite" => ["required",Rule::unique('users','numeroPieceIdentite')->ignore($this->editUser['id'])],
+                "editUser.situationMatrimoniale" => ["required"],
+                "editUser.email" => ["required","email",Rule::unique('users','email')->ignore($this->editUser['id'])]
+            ];
+        }else{
+            return [
+                "newUser.nom" => "required",
+                "newUser.prenom" => "required",
+                //"newUser.photo" => "required",
+                "newUser.service_id" => "required",
+                "newUser.fonction_id" => "required",
+                "newUser.niveauEtude" => "required",
+                "newUser.nombrEnfant" => ["numeric"],
+                "newUser.adresse" => "required",
+                "newUser.sexe" => "required",
+                "newUser.telephone" => "required|numeric|unique:users,telephone",
+                "newUser.telephone2" => "required|numeric|unique:users,telephone2",
+                "newUser.pieceIdentite" => "required",
+                "newUser.numeroPieceIdentite" => "required|unique:users,numeroPieceIdentite",
+                "newUser.situationMatrimoniale" => "required",
+                "newUser.email" => "required|email|unique:users,email"
+            ];
+        }
+    }
+
     public function goToAddUser(){
-        $this->isBtnAddClicked = true;
+        $this->currentPage = PAGECREATEFORM;
+    }
+
+    public function goToAEditUser($id){
+        //dump(User::find($id)->toArray());
+        $this->editUser = User::find($id)->toArray();
+        $this->currentPage = PAGEEDITFORM;
     }
 
     public function goToListUser(){
-        $this->isBtnAddClicked = false;
+        $this->currentPage = PAGELIST;
+        $this->editUser = [];
+        $this->newUser = [];
     }
 
     public function addUser(){
@@ -73,9 +107,20 @@ class Utilisateurs extends Component
         $validationAttributes["newUser"]["photo"] = "image.png";
         User::create($validationAttributes["newUser"]);
 
-        $this->newUser = [];
+        $this->editUser = [];
 
         $this->dispatchBrowserEvent("showSuccessMessage",["message" => "Employé créé avec succès !"]);
+    }
+
+
+    public function updateUser(){
+        //dump($this->editUser);
+
+        $validationAttributes = $this->validate();
+        
+        User::find($this->editUser["id"])->update($validationAttributes["editUser"]);
+
+        $this->dispatchBrowserEvent("showSuccessMessage",["message" => "Employé mis à jour avec succès !"]);
     }
 
     public function confirmDelete($name,$id){
